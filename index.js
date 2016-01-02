@@ -1,9 +1,12 @@
-const config = require('./config');
+'use strict';
 const colors = require('colors');
 const Project = require('./lib/project');
 const proxy = require('./lib/proxy');
+const util = require('util');
 const fs = require('fs');
-const argv = process.argv.slice(2);
+var EventEmitter = require('events').EventEmitter;
+global.event = new EventEmitter();
+
 colors.setTheme({
     silly: 'rainbow',
     input: 'grey',
@@ -21,42 +24,46 @@ process.on('uncaughtException', function (err) {
     console.log(err.stack);
 });
 
-var list = argv.map(function(item) {
-   var arr = item.split(':')
-   return {
-       name: arr[0],
-       method: arr[1] || 'watch'
-   };
-});
+global.log = function () {
+    var args = [].slice.call(arguments);
+    args.unshift('------------ ');
+    console.log(args.join(' '));
+};
 var project = {
-    init: function (list) {
-        this.projects = {};
-        if(config.proxy.open) {
-           proxy(Object.assign(config.proxy, config.global));
+    projects: {},
+    init: function () {
+        this.proxy();
+    },
+    add: function (config, method) {
+       method = method || 'watch';
+       log(method);
+       var project =  this.projects[config.name] = new Project(config);
+       project[method]();
+    },
+    watch: function (config) {
+        var name = config.name;
+        if (!this.projects[name]) {
+            this.add(config, 'watch');
+        } else {
+            this.projects[name].watch();
         }
-        list.forEach(this.add.bind(this));
     },
-    add: function (item) {
-        var conf =  config.projects[item.name];
-        if(typeof conf == 'string') {
-           conf = JSON.parse(fs.readFileSync(conf, {encoding: 'utf8'}));
+    proxy: function(config) {
+        if (config.proxy.open) {
+            log('open proxy'.info);
+            proxy(config);
         }
-        Object.assign(conf, config.global, {method: item.method});
-        this.projects[item.name] = new Project(conf);
     },
-    watch: function(name) {
-       this.projects[name].watch();
+    close: function (config) {
+        this.projects[config.name].close();
     },
-    close: function (name) {
-        this.projects[name].stop();
-    },
-    build: function (name) {
-        this.projects[name].build();
+    build: function (config) {
+        var name = config.name;
+        if (!this.projects[name]) {
+            this.add(config, 'build');
+        } else {
+            this.projects[name].build();
+        }
     }
 };
-
-if(list.length) {
-   project.init(list);
-};
-
 module.exports = project;
