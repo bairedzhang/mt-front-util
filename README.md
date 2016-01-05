@@ -1,6 +1,6 @@
-##手腾前端工具集
+#手腾前端工具集
 
-#配置文件，统一规范文件名为mt-conf.js 放到项目根目录下
+###配置文件，统一规范文件名为mt-conf.js 放到项目根目录下
 ```javascript
   module.exports = {
     "name": "悦图",  //项目名称
@@ -24,7 +24,7 @@
     }
   };
 ```
-#example
+###example
 
 ```sh
   cd /Users/bairedzhang/Dropbox/tencent/frontend/apps/photo;
