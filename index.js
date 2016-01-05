@@ -36,7 +36,6 @@ let project = {
     },
     add: function (config, method) {
        method = method || 'watch';
-       log(method);
        let project =  this.projects[config.name] = new Project(config);
        project[method]();
     },
