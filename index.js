@@ -21,7 +21,7 @@ colors.setTheme({
 });
 
 process.on('uncaughtException', function (err) {
-    console.log(err.stack);
+    console.error(err.stack);
 });
 
 global.log = function () {
@@ -49,10 +49,7 @@ let project = {
         }
     },
     proxy: function(config) {
-        if (config.proxy.open) {
-            log('open proxy'.info);
-            proxy(config);
-        }
+       proxy(config);
     },
     close: function (config) {
         this.projects[config.name].close();
