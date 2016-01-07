@@ -6,7 +6,7 @@ const program = require('commander');
 const path = process.cwd();
 const confPath = path + '/mt-conf.js';
 program
-    .version('0.0.9')
+    .version('0.1.2)
     .option('-p --proxy', '本地代理');
 program.parse(process.argv);
 
