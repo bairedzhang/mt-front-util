@@ -31,7 +31,7 @@
     }
   };
 ```
-###command line
+##command line
 ```sh
   cd /Users/bairedzhang/Dropbox/tencent/frontend/apps/photo;
   mt   //默认watch 等同于 mt watch
