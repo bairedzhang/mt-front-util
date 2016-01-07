@@ -1,6 +1,6 @@
 #手腾前端工具集
 
-###Installing
+##Installing
 
 ```sh
   npm install -g mt-front-util
