@@ -48,7 +48,10 @@ let project = {
         }
     },
     proxy: function(config) {
-       proxy(config);
+       proxy.start(config);
+    },
+    closeProxy: function() {
+       proxy.close();
     },
     close: function (config) {
         this.projects[config.name].close();
