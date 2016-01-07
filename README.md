@@ -1,5 +1,12 @@
 #手腾前端工具集
 
+###install
+
+```sh
+  npm install -g mt-front-util
+```
+##example
+
 ###配置文件，统一规范文件名为mt-conf.js 放到项目根目录下
 ```javascript
   module.exports = {
@@ -16,15 +23,14 @@
     },
     "watch": ["upload", "compile"], //默认必填,为后续扩展需要
     "build": ["compile", "upload"], //默认必填,为后续扩展需要
-    proxy: { //本地代理配置
-        port: 8088, //端口
-        map: { //映射别名配置
-            g: 'info'
+    "proxy": { //本地代理配置
+        "port": 8088, //端口
+         "map": { //映射别名配置
+           "g": 'info'
         }
     }
   };
 ```
-###example
 
 ```sh
   cd /Users/bairedzhang/Dropbox/tencent/frontend/apps/photo;
