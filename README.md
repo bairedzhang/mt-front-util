@@ -1,11 +1,11 @@
 #手腾前端工具集
 
-###install
+###Installing
 
 ```sh
   npm install -g mt-front-util
 ```
-##example
+##Configuring
 
 ###配置文件，统一规范文件名为mt-conf.js 放到项目根目录下
 ```javascript
