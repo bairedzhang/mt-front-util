@@ -24,9 +24,16 @@ process.on('uncaughtException', function (err) {
     console.error(err.stack);
 });
 
+let getTime = function () {
+    var date = new Date();
+    var fmt = function (num) {
+        return num < 10 ? ('0' + num) : num
+    };
+    return '[ ' + [date.getHours(), date.getMinutes(), date.getSeconds()].map((item) => fmt(item)).join(':') + ' ]';
+};
 global.log = function () {
     let args = [].slice.call(arguments);
-    args.unshift('------------ ');
+    args.unshift(getTime().debug);
     console.log(args.join(' '));
 };
 let project = {

@@ -15,14 +15,13 @@ const version =  pkg.version;
 program
     .version(version)
     .option('-p --proxy', '本地代理')
-    .option('build', '构建')
-    .option('watch', '监控');
 program.parse(process.argv);
 
+let method = program.args[0] || 'watch';
 if (fs.existsSync(confPath)) {
     let config = readJSON(confPath);
-    mt.add(config, program.args[0] || 'watch');
-    if(fs.existsSync(config.frontendModsPath)){
+    mt.add(config, method);
+    if(method == 'watch' && fs.existsSync(config.frontendModsPath)){
        let frontConf = readJSON(config.frontendModsPath + '/mt.conf');
        mt.add(frontConf, 'watch');
     }
