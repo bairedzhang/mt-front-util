@@ -7,12 +7,13 @@
 ```
 ##Configuring
 
-###配置文件，统一规范文件名为mt-conf.js 放到项目根目录下
+###配置文件，统一规范文件名为mt.conf 放到项目根目录下
 ```javascript
-  module.exports = {
+  {
     "name": "悦图",  //项目名称
     "proxyRoot": "/tmp/tencent_proxy", //本地build&proxy根路径,对应测试环境webapps/
-    "localPath": "/Users/bairedzhang/Dropbox/tencent/frontend/apps/photo", //项目本地根路径
+    "localPath": "/users/bairedzhang/dropbox/tencent/frontend/apps/photo", //项目本地根路径
+    "frontendModsPath": "/users/bairedzhang/dropbox/tencent/frontend/mods", //组件库本地路径
     "serverPath": "/frontend/apps/photo",//项目测试环境相对于webapps路径
     "serverRoot": "/usr/local/app/resin_bairedzhang/webapps", //测试环境根路径
     "compile": { //编译任务
@@ -29,7 +30,7 @@
            "g": 'info'
         }
     }
-  };
+  }
 ```
 ##command line
 ```sh
