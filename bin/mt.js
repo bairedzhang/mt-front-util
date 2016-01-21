@@ -7,6 +7,7 @@ const Path = require('path');
 const cwd = Path.resolve(process.cwd());
 const confPath = cwd + '/mt.conf';
 const jsfmt = require('jsfmt');
+const newProject = require('../lib/init');
 const readJSON = function (path) {
     return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
@@ -18,6 +19,7 @@ program
     .usage(`
      watch          监控&编译&上传到测试环境
      build          编译整个项目&上传到测试环境
+     init           脚手架 init projectName [jsp/ftl] 默认jsp
      compile        编译整个项目到本地代理路径`)
     .option('-p --proxy', '本地代理')
 program.parse(process.argv);
@@ -32,6 +34,10 @@ const configMods = function (conf) {
     str = jsfmt.format('a = ' + str).replace(/.*?a.*?\=.*?\{/, '{');
     fs.writeFileSync(conf.localPath + '/mt.conf', str, {encoding: 'utf8'});
 }
+if(method == 'init') {
+   new newProject(program.args[1], program.args[2] || '').init();
+}
+
 if (fs.existsSync(confPath)) {
     let config = readJSON(confPath);
     config.localPath = Path.resolve(cwd);

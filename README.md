@@ -37,5 +37,6 @@
   cd /Users/bairedzhang/Dropbox/tencent/frontend/apps/photo;
   mt   //默认watch 等同于 mt watch
   mt -p //开启本地代理 + watch 等同于 mt watch -p
+  mt init [project-name] [type] // 构建新项目脚手架，type 可选 jsp/ftl 默认jsp
   mt build //构建项目，编译整个项目的js文件 并将项目所有文件上传到测试环境对应路径
 ```
