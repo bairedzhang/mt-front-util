@@ -1,6 +1,6 @@
 {
   "name": "mt-front-util",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "util for mt-frontend",
   "main": "main.js",
   "scripts": {},
@@ -19,6 +19,10 @@
     "babel-core": "^6.5.2",
     "babel-plugin-transform-es2015-modules-mt-amd": "^0.1.2",
     "babel-plugin-transform-react-jsx": "^6.5.2",
+    "babel-preset-stage-0": "latest",
+    "babel-preset-stage-1": "latest",
+    "babel-preset-stage-2": "latest",
+    "babel-preset-stage-3": "latest",
     "babel-preset-es2015": "^6.5.0",
     "chokidar": "^1.4.1",
     "colors": "^1.1.2",
