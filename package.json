@@ -1,6 +1,6 @@
 {
   "name": "mt-front-util",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "util for mt-frontend",
   "main": "main.js",
   "scripts": {},
