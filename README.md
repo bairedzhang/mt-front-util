@@ -11,11 +11,10 @@
 ```javascript
   {
     "name": "悦图",  //项目名称
-    "proxyRoot": "/tmp/tencent_proxy", //本地build&proxy根路径,对应测试环境webapps/
-    "localPath": "/users/bairedzhang/dropbox/tencent/frontend/apps/photo", //项目本地根路径
-    "frontendModsPath": "/users/bairedzhang/dropbox/tencent/frontend/mods", //组件库本地路径
+    "proxyRoot": "/tmp/tencent_proxy", //本地build&proxy根路径,对应测试环境webapps/ 可不填 默认是/tmp/tencent_proxy
+    "frontendModsPath": "/users/bairedzhang/dropbox/tencent/frontend/mods", //组件库本地路径 //如果是在frontend下的工程可不填
     "serverPath": "/frontend/apps/photo",//项目测试环境相对于webapps路径
-    "serverRoot": "/usr/local/app/resin_bairedzhang/webapps", //测试环境根路径
+    "serverRoot": "/usr/local/app/resin_bairedzhang/webapps", //测试环境根路径  若 mt --user [rtx]后 可不填
     "compile": { //编译任务
         "babel":{
             "presets": ["es2015"], //es6 -> es5
@@ -39,4 +38,5 @@
   mt -p //开启本地代理 + watch 等同于 mt watch -p
   mt init [project-name] [type] // 构建新项目脚手架，type 可选 jsp/ftl 默认jsp
   mt build //构建项目，编译整个项目的js文件 并将项目所有文件上传到测试环境对应路径
+  mt --user bairedzhang //配置用户rtx名 初始安装时建议操作 ， 这样以后就不用在mt.conf里填写 serverRoot了
 ```
