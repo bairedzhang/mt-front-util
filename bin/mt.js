@@ -22,7 +22,6 @@ program
      compile        编译整个项目到本地代理路径`)
     .option('-p --proxy', '本地代理')
     .option('--user [type]', 'config user')
-    .option('--proxyRoot [type]', 'config proxyRoot');
 
 program.parse(process.argv);
 
@@ -41,7 +40,8 @@ let setConfig = function (cwd, confPath) {
         localPath: Path.resolve(cwd),
         serverRoot: `/usr/local/app/resin_${mtConfig.user}/webapps`,
         proxyRoot: mtConfig.proxyRoot,
-        serverPath: serverPath
+        serverPath: serverPath,
+        cssProPath: './static/'
     }, config);
     return config;
 };
