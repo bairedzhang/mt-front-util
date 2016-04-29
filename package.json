@@ -1,6 +1,6 @@
 {
   "name": "mt-front-util",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "util for mt-frontend",
   "main": "main.js",
   "scripts": {},
@@ -34,7 +34,7 @@
     "lodash.isfunction": "^3.0.7",
     "lodash.merge": "^4.0.1",
     "mkdirp": "^0.5.1",
-    "mt-uz": "0.0.4",
+    "mt-uz": "0.0.5",
     "node-static": "^0.7.7",
     "request": "^2.67.0",
     "uglify-js": "^2.6.2",
