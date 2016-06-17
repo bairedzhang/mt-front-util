@@ -19,8 +19,11 @@ program
      watch          监控&编译&上传到测试环境
      build          编译整个项目&上传到测试环境
      init           脚手架 init projectName [jsp/ftl] 默认jsp
+     release        产出上线代码 
      compile        编译整个项目到本地代理路径`)
     .option('-p --proxy', '本地代理')
+    .option('-c, --ver [type]', 'release ver')
+    .option('-b --bundle', '监控时合并压缩代码')
 
 program.parse(process.argv);
 
@@ -37,8 +40,16 @@ let setConfig = function (cwd, confPath) {
         serverRoot: `/usr/local/app/resin_${mtConfig.user}/webapps`,
         proxyRoot: mtConfig.proxyRoot,
         serverPath: serverPath,
-        cssProPath: './static/'
+        cssProPath: './static/',
+        localFrontendMods: mtConfig.localFrontendMods
     }, conf);
+    if (program.bundle) {
+        conf.bundle = true;
+    }
+
+    if (program.ver) {
+        conf.releaseVer = program.ver;
+    }
     return conf;
 };
 

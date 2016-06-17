@@ -34,6 +34,7 @@
     "lodash.isfunction": "^3.0.7",
     "lodash.merge": "^4.0.1",
     "mkdirp": "^0.5.1",
+    "mt-build": "^0.2.3",
     "mt-uz": "0.0.6",
     "node-static": "^0.7.7",
     "request": "^2.67.0",

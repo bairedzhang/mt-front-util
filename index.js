@@ -34,6 +34,7 @@ let getTime = function () {
 global.log = function () {
     let args = [].slice.call(arguments);
     args.unshift(getTime().debug);
+    args = args.map(item => typeof item == 'string' ? item : JSON.stringify(item).yellow);
     console.log(args.join(' '));
 };
 let project = {
@@ -65,7 +66,6 @@ let project = {
     closeProxy: function () {
         proxy.close();
     },
-
     close: function (config) {
         this.projects[config.name].close();
     },
