@@ -58,7 +58,8 @@
     },
     "build": [
       "upload",
-      "compile"
+      "compile",
+      "css"
     ],
     "watch": [
       "upload",
