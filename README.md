@@ -54,7 +54,8 @@
             }
           ]
         ]
-      }
+      },
+      "ignore": "[\/\\\\](\\.|node_modules)"
     },
     "build": [
       "upload",
